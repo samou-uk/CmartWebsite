@@ -1,0 +1,20 @@
+{
+  "id": 1,
+  "slug": "classic-pad-thai",
+  "title": "Classic Pad Thai",
+  "category": "thai",
+  "difficulty": "medium",
+  "time": "30 min",
+  "description": "Authentic Thai stir-fried noodles with tamarind, fish sauce, and fresh vegetables.",
+  "allergies": [
+    "gluten",
+    "eggs",
+    "shellfish",
+    "fish"
+  ],
+  "ingredients": [],
+  "instructions": [],
+  "image": null,
+  "createdAt": "2024-01-01T00:00:00Z",
+  "updatedAt": "2025-12-12T20:39:17.214Z"
+}

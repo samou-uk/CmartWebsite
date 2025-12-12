@@ -1,0 +1,16 @@
+{
+  "id": 5,
+  "slug": "pho-bo",
+  "title": "Pho Bo",
+  "category": "vietnamese",
+  "difficulty": "hard",
+  "time": "3 hours",
+  "description": "Traditional Vietnamese beef noodle soup with aromatic broth and fresh herbs.",
+  "allergies": [],
+  "image": null,
+  "ingredients": [],
+  "instructions": [],
+  "createdAt": "2024-01-01T00:00:00Z",
+  "updatedAt": "2024-01-01T00:00:00Z"
+}
+

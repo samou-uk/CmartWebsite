@@ -1,0 +1,16 @@
+{
+  "id": 6,
+  "slug": "chicken-tikka-masala",
+  "title": "Chicken Tikka Masala",
+  "category": "indian",
+  "difficulty": "medium",
+  "time": "50 min",
+  "description": "Creamy tomato-based curry with tender spiced chicken pieces.",
+  "allergies": ["dairy"],
+  "image": null,
+  "ingredients": [],
+  "instructions": [],
+  "createdAt": "2024-01-01T00:00:00Z",
+  "updatedAt": "2024-01-01T00:00:00Z"
+}
+
