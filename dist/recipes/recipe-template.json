@@ -1,0 +1,24 @@
+{
+  "id": 1,
+  "slug": "recipe-slug-name",
+  "title": "Recipe Title",
+  "category": "chinese",
+  "difficulty": "easy",
+  "time": "30 min",
+  "description": "A delicious recipe description that will appear on the recipe card.",
+  "author": "Author Name (optional)",
+  "allergies": ["gluten", "dairy"],
+  "ingredients": [
+    "Ingredient 1",
+    "Ingredient 2",
+    "Ingredient 3"
+  ],
+  "instructions": [
+    "Step 1: Do this first",
+    "Step 2: Then do this",
+    "Step 3: Finally, do this"
+  ],
+  "createdAt": "2024-01-01T00:00:00.000Z",
+  "updatedAt": "2024-01-01T00:00:00.000Z"
+}
+

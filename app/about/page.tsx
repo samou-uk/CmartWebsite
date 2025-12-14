@@ -12,8 +12,8 @@ export default function About() {
       <section className="relative py-12 md:py-16 overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="/store-exterior.png"
-            alt="Cmart Store Exterior"
+            src="/bao.png"
+            alt="Cmart Store"
             fill
             className="object-cover"
             priority

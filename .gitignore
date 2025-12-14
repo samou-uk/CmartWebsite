@@ -27,6 +27,10 @@ yarn-error.log*
 # local env files
 .env*.local
 
+# audit logs (contains sensitive information)
+.logs/
+audit.log
+
 # admin config (contains sensitive data)
 .config/
 config/admin.json

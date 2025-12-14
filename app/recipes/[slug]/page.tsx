@@ -1,23 +1,51 @@
-import { getRecipeBySlug, getAllRecipes } from '@/lib/recipes'
-import { notFound } from 'next/navigation'
+'use client'
+
+import { useState, useEffect } from 'react'
+import { useParams, useRouter } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
 import { ArrowRightIcon } from '@/components/icons'
+import { Recipe } from '@/lib/recipes-client'
 
-export const revalidate = 3600 // Revalidate every hour
+export default function RecipePage() {
+  const params = useParams()
+  const router = useRouter()
+  const slug = params.slug as string
+  const [recipe, setRecipe] = useState<Recipe | null>(null)
+  const [loading, setLoading] = useState(true)
 
-export async function generateStaticParams() {
-  const recipes = getAllRecipes()
-  return recipes.map((recipe) => ({
-    slug: recipe.slug,
-  }))
-}
+  useEffect(() => {
+    async function loadRecipe() {
+      try {
+        const { getRecipeBySlug } = await import('@/lib/recipes-client')
+        const loadedRecipe = await getRecipeBySlug(slug)
+        if (!loadedRecipe) {
+          router.push('/not-found')
+          return
+        }
+        setRecipe(loadedRecipe)
+      } catch (error) {
+        console.error('Error loading recipe:', error)
+        router.push('/not-found')
+      } finally {
+        setLoading(false)
+      }
+    }
+    if (slug) {
+      loadRecipe()
+    }
+  }, [slug, router])
 
-export default async function RecipePage({ params }: { params: { slug: string } }) {
-  const recipe = getRecipeBySlug(params.slug)
+  if (loading) {
+    return (
+      <div className="pt-20 min-h-screen flex items-center justify-center">
+        <div className="text-gray-600">Loading recipe...</div>
+      </div>
+    )
+  }
 
   if (!recipe) {
-    notFound()
+    return null
   }
 
   return (
@@ -69,6 +97,11 @@ export default async function RecipePage({ params }: { params: { slug: string } 
               <p className="text-xl text-gray-600 leading-relaxed">
                 {recipe.description}
               </p>
+              {recipe.author && (
+                <p className="text-sm text-gray-500 mt-3">
+                  By {recipe.author}
+                </p>
+              )}
             </div>
 
             {recipe.allergies && recipe.allergies.length > 0 && (

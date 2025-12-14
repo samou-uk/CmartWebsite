@@ -1,0 +1,82 @@
+# Security Headers for Cmart Site
+# Note: These headers should be configured at the server level for best security
+# This .htaccess file works for Apache servers (cPanel)
+
+# Force HTTPS - Redirect HTTP to HTTPS
+# React Router SPA - Redirect all requests to index.html except for actual files
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  
+  # Force HTTPS redirect
+  RewriteCond %{HTTPS} off
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+  
+  # SPA Routing: If the requested file/directory doesn't exist, serve index.html
+  # This allows React Router to handle client-side routing
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . /index.html [L]
+</IfModule>
+
+# Content Security Policy
+<IfModule mod_headers.c>
+  Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://tally.so https://www.google.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; connect-src 'self' https://tally.so https://www.google.com; frame-src 'self' https://tally.so https://www.google.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests;"
+  
+  # XSS Protection
+  Header set X-XSS-Protection "1; mode=block"
+  
+  # Prevent MIME type sniffing
+  Header set X-Content-Type-Options "nosniff"
+  
+  # Clickjacking protection
+  Header set X-Frame-Options "DENY"
+  
+  # Referrer Policy
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  
+  # Permissions Policy
+  Header set Permissions-Policy "camera=(), microphone=(), geolocation=(), interest-cohort=()"
+  
+  # Strict Transport Security (HSTS) - Only enable if HTTPS is properly configured
+  # Header set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+  
+  # Remove server information
+  Header unset X-Powered-By
+  Header unset Server
+</IfModule>
+
+# Prevent access to sensitive files
+<FilesMatch "^\.">
+  Order allow,deny
+  Deny from all
+</FilesMatch>
+
+# Prevent directory listing
+Options -Indexes
+
+# Enable compression
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json
+</IfModule>
+
+# Cache static assets
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/x-icon "access plus 1 year"
+  ExpiresByType image/vnd.microsoft.icon "access plus 1 year"
+  ExpiresByType image/jpg "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/gif "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+  ExpiresByType application/json "access plus 0 seconds"
+</IfModule>
+
+# Ensure favicon is served with correct MIME type
+<IfModule mod_mime.c>
+  AddType image/x-icon .ico
+  AddType image/vnd.microsoft.icon .ico
+</IfModule>
+

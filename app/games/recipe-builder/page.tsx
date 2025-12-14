@@ -591,7 +591,7 @@ export default function RecipeBuilder() {
                   <div className="relative w-full h-full" style={{ minHeight: '350px' }}>
                     {availableIngredients.map((ingredient, idx) => {
                       const isSelected = gameState.selectedIngredients.includes(ingredient)
-                      const isCorrect = gameState.currentRecipe.ingredients.includes(ingredient)
+                      const isCorrect = gameState.currentRecipe?.ingredients.includes(ingredient) ?? false
                       const isWrong = isSelected && !isCorrect
                       const position = cardPositions[idx] || { x: 50, y: 50, vx: 0, vy: 0 }
                       

@@ -87,3 +87,4 @@ NEXT_PUBLIC_BASE_URL=https://yourdomain.com
 - Consider adding proper authentication (OAuth, etc.) for production
 - The current system uses simple password-based auth - suitable for small teams
 
+

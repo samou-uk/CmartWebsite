@@ -75,3 +75,4 @@ The system will still check for `ADMIN_SECRET` if `ADMIN_PASSWORD_HASH` is not s
 - Make sure you're running the command from the project root directory
 - The script should be at `scripts/hash-password.js`
 
+

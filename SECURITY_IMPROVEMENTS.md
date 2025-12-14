@@ -67,3 +67,4 @@
 3. Check browser DevTools → Cookie should be httpOnly (not visible in JavaScript)
 4. Try accessing `/api/recipes` without cookie → Should get 401 Unauthorized
 
+

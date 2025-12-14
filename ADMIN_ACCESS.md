@@ -44,3 +44,4 @@ Images will display:
 - At the top of recipe detail pages
 - In the admin interface
 
+

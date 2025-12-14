@@ -12,10 +12,10 @@ export default function Location() {
       <section className="relative py-12 md:py-16 overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="/store-exterior.png"
-            alt="Cmart Store Exterior"
+            src="/cmart.png"
+            alt="Cmart Store"
             fill
-            className="object-cover"
+            className="object-cover object-[center_20%]"
             priority
             quality={90}
           />

@@ -5,7 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRightIcon, GlutenIcon, DairyIcon, NutsIcon, ShellfishIcon, EggsIcon, SoyIcon, FishIcon } from '@/components/icons'
 import { useLanguage } from '@/contexts/LanguageContext'
-import { Recipe } from '@/lib/recipes'
+import { Recipe } from '@/lib/recipes-client'
 import { RecipeCategory, Difficulty, Allergy } from '@/types/recipe'
 
 interface RecipesClientProps {
@@ -365,6 +365,9 @@ export default function RecipesClient({ initialRecipes }: RecipesClientProps) {
                             {recipe.title}
                           </h3>
                           <p className="text-gray-600 text-sm line-clamp-2">{recipe.description}</p>
+                          {recipe.author && (
+                            <p className="text-xs text-gray-500 mt-2">By {recipe.author}</p>
+                          )}
                         </div>
                         <div className="mt-auto pt-4 border-t border-gray-200">
                           <div className="flex items-center justify-between mb-3">

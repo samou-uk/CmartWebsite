@@ -10,6 +10,7 @@ export interface Recipe {
   difficulty: Difficulty
   time: string
   description: string
+  author?: string | null
   allergies: Allergy[]
   image?: string | null
   ingredients?: string[]
@@ -88,6 +89,40 @@ export function saveRecipe(recipe: Recipe): boolean {
     // Generate filename from ID and slug
     const fileName = `${recipe.id}-${recipe.slug}.json`
     const filePath = path.join(recipesDirectory, fileName)
+
+    // If updating an existing recipe, find and delete all old files with the same ID
+    if (recipe.id > 0) {
+      const fileNames = fs.readdirSync(recipesDirectory)
+      const filesToDelete: string[] = []
+
+      // Find all files with the same ID but different slug
+      for (const existingFileName of fileNames) {
+        if (existingFileName.endsWith('.json')) {
+          // Check if this file has the same ID
+          const idMatch = existingFileName.match(/^(\d+)-/)
+          if (idMatch && parseInt(idMatch[1]) === recipe.id) {
+            // Check if it's not the file we're about to create
+            if (existingFileName !== fileName) {
+              filesToDelete.push(existingFileName)
+            }
+          }
+        }
+      }
+
+      // Delete old files
+      for (const oldFileName of filesToDelete) {
+        const oldFilePath = path.join(recipesDirectory, oldFileName)
+        if (fs.existsSync(oldFilePath)) {
+          try {
+            fs.unlinkSync(oldFilePath)
+            console.log(`Deleted old recipe file: ${oldFileName}`)
+          } catch (deleteError) {
+            console.error(`Error deleting old recipe file ${oldFileName}:`, deleteError)
+            // Continue anyway - we'll still save the new file
+          }
+        }
+      }
+    }
 
     // Update timestamp
     recipe.updatedAt = new Date().toISOString()

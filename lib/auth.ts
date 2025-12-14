@@ -171,3 +171,54 @@ export function clearRateLimit(identifier: string) {
   loginAttempts.delete(identifier)
 }
 
+// CSRF Token Management
+const CSRF_TOKEN_DURATION = 24 * 60 * 60 * 1000 // 24 hours (same as session)
+
+export interface CSRFTokenData {
+  token: string
+  expiresAt: number
+}
+
+/**
+ * Generate a new CSRF token
+ */
+export function generateCSRFToken(): string {
+  return crypto.randomBytes(32).toString('hex')
+}
+
+/**
+ * Validate a CSRF token
+ * Uses timing-safe comparison to prevent timing attacks
+ */
+export function validateCSRFToken(token: string, storedToken: string | null): boolean {
+  if (!token || !storedToken) {
+    return false
+  }
+  
+  // Ensure tokens are the same length before comparison
+  if (token.length !== storedToken.length) {
+    return false
+  }
+  
+  // Use timing-safe comparison to prevent timing attacks
+  try {
+    return crypto.timingSafeEqual(
+      Buffer.from(token),
+      Buffer.from(storedToken)
+    )
+  } catch (error) {
+    // If comparison fails (e.g., different lengths), return false
+    return false
+  }
+}
+
+/**
+ * Create CSRF token data for storage
+ */
+export function createCSRFTokenData(): CSRFTokenData {
+  return {
+    token: generateCSRFToken(),
+    expiresAt: Date.now() + CSRF_TOKEN_DURATION,
+  }
+}
+

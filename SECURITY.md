@@ -46,3 +46,4 @@ The following security headers are configured in `next.config.js`:
 5. Monitor security headers using tools like [SecurityHeaders.com](https://securityheaders.com)
 
 
+
