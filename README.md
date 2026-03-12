@@ -2,14 +2,6 @@
 
 A modern, premium website for Cmart - an oriental grocery store in Earley, Reading.
 
-## Features
-
-- 🎨 Modern, sleek design with dark green and white color scheme
-- 📱 Fully responsive layout
-- ⚡ Built with Next.js 14 and React
-- 🎯 Tailwind CSS for styling
-- 🚀 Fast and optimized performance
-
 ## Getting Started
 
 ### Prerequisites
