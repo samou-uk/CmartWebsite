@@ -1,6 +1,4 @@
 {
-  "id": 1,
-  "slug": "recipe-slug-name",
   "title": "Recipe Title",
   "category": "chinese",
   "difficulty": "easy",
@@ -17,8 +15,5 @@
     "Step 1: Do this first",
     "Step 2: Then do this",
     "Step 3: Finally, do this"
-  ],
-  "createdAt": "2024-01-01T00:00:00.000Z",
-  "updatedAt": "2024-01-01T00:00:00.000Z"
+  ]
 }
-

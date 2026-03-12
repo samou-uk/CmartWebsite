@@ -3,19 +3,10 @@
 # This .htaccess file works for Apache servers (cPanel)
 
 # Force HTTPS - Redirect HTTP to HTTPS
-# React Router SPA - Redirect all requests to index.html except for actual files
 <IfModule mod_rewrite.c>
   RewriteEngine On
-  
-  # Force HTTPS redirect
   RewriteCond %{HTTPS} off
   RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-  
-  # SPA Routing: If the requested file/directory doesn't exist, serve index.html
-  # This allows React Router to handle client-side routing
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule . /index.html [L]
 </IfModule>
 
 # Content Security Policy

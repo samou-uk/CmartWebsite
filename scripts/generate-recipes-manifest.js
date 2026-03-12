@@ -1,16 +1,12 @@
 /**
  * Generate recipes-manifest.json from all recipe files in public/recipes/
- * This script runs automatically during build
+ * Run this script after adding new recipe JSON files
  * 
  * Usage: node scripts/generate-recipes-manifest.js
  */
 
-import fs from 'fs'
-import path from 'path'
-import { fileURLToPath } from 'url'
-
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
+const fs = require('fs')
+const path = require('path')
 
 const recipesDir = path.join(process.cwd(), 'public', 'recipes')
 const manifestPath = path.join(recipesDir, 'recipes-manifest.json')
@@ -32,32 +28,8 @@ function generateManifest() {
       file !== 'recipe-template.json'
     )
 
-    const recipeEntries = []
-
-    // Parse each recipe file to get id, slug, and filename
-    for (const fileName of recipeFiles) {
-      const filePath = path.join(recipesDir, fileName)
-      try {
-        const fileContents = fs.readFileSync(filePath, 'utf8')
-        const recipe = JSON.parse(fileContents)
-        if (recipe.id && recipe.slug) {
-          recipeEntries.push({ 
-            id: recipe.id, 
-            slug: recipe.slug, 
-            filename: fileName 
-          })
-        } else {
-          console.warn(`Skipping invalid recipe file (missing id or slug): ${fileName}`)
-        }
-      } catch (parseError) {
-        console.error(`Error parsing recipe file ${fileName}:`, parseError)
-      }
-    }
-
-    // Sort recipes by ID
-    recipeEntries.sort((a, b) => a.id - b.id)
-
-    if (recipeEntries.length === 0) {
+    if (recipeFiles.length === 0) {
+      console.warn('No recipe JSON files found in public/recipes/')
       // Create empty manifest
       const emptyManifest = { recipes: [] }
       fs.writeFileSync(manifestPath, JSON.stringify(emptyManifest, null, 2))
@@ -65,15 +37,16 @@ function generateManifest() {
       return
     }
 
-    // Create manifest with list of recipe entries
+    // Create manifest with list of recipe files
     const manifest = {
-      recipes: recipeEntries
+      recipes: recipeFiles.sort()
     }
 
     // Write manifest file
     fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2))
     
-    console.log(`✅ Generated recipes-manifest.json with ${recipeEntries.length} recipe(s)`)
+    console.log(`✅ Generated recipes-manifest.json with ${recipeFiles.length} recipe(s):`)
+    recipeFiles.forEach(file => console.log(`   - ${file}`))
     
   } catch (error) {
     console.error('Error generating manifest:', error)
@@ -82,3 +55,4 @@ function generateManifest() {
 }
 
 generateManifest()
+
