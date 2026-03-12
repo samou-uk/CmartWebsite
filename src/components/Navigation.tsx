@@ -28,54 +28,54 @@ export default function Navigation() {
       <div className="container-custom">
         <div className="flex items-center justify-between h-20 relative">
           {/* Left Navigation */}
-          <div className="hidden lg:flex items-center space-x-4 xl:space-x-7 flex-1 min-w-0">
+          <div className="hidden md:flex items-center space-x-7 flex-1">
             <Link
               to="/"
-              className="nav-link-3d text-gray-700 font-medium transition-all duration-300 relative px-2 py-1 whitespace-nowrap"
+              className="nav-link-3d text-gray-700 font-medium transition-all duration-300 relative px-2 py-1"
             >
               {t('nav.home')}
             </Link>
             <Link
               to="/about"
-              className="nav-link-3d text-gray-700 font-medium transition-all duration-300 relative px-2 py-1 whitespace-nowrap"
+              className="nav-link-3d text-gray-700 font-medium transition-all duration-300 relative px-2 py-1"
             >
               {t('nav.about')}
             </Link>
             <Link
               to="/recipes"
-              className="nav-link-3d text-gray-700 font-medium transition-all duration-300 relative px-2 py-1 whitespace-nowrap"
+              className="nav-link-3d text-gray-700 font-medium transition-all duration-300 relative px-2 py-1"
             >
               {t('nav.recipes')}
             </Link>
           </div>
 
           {/* Logo - Centered */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 flex-shrink-0 nav-logo-3d z-10">
+          <div className="absolute left-1/2 transform -translate-x-1/2 flex-shrink-0 nav-logo-3d">
             <Logo />
           </div>
 
           {/* Right Navigation */}
-          <div className="hidden lg:flex items-center space-x-4 xl:space-x-7 flex-1 justify-end min-w-0">
+          <div className="hidden md:flex items-center space-x-7 flex-1 justify-end">
             <Link
               to="/location"
-              className="nav-link-3d text-gray-700 font-medium transition-all duration-300 relative px-2 py-1 whitespace-nowrap"
+              className="nav-link-3d text-gray-700 font-medium transition-all duration-300 relative px-2 py-1"
             >
               {t('nav.location')}
             </Link>
             <Link
               to="/contact"
-              className="bg-primary text-white px-4 xl:px-6 py-2.5 rounded-lg font-medium hover:bg-primary-dark transition-all duration-300 relative whitespace-nowrap text-sm xl:text-base"
+              className="bg-primary text-white px-6 py-2.5 rounded-lg font-medium hover:bg-primary-dark transition-all duration-300 relative"
             >
               {t('nav.contact')}
             </Link>
-            <div className="nav-link-3d flex-shrink-0">
+            <div className="nav-link-3d">
               <LanguageSwitcher />
             </div>
           </div>
 
-          {/* Mobile Menu Button - Show on screens smaller than lg */}
+          {/* Mobile Menu Button */}
           <button
-            className="lg:hidden p-2 text-gray-700 ml-auto z-20"
+            className="md:hidden p-2 text-gray-700 ml-auto"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -99,7 +99,7 @@ export default function Navigation() {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden pb-6 space-y-4">
+          <div className="md:hidden pb-6 space-y-4">
             <Link
               to="/"
               className="block text-gray-900 hover:text-primary font-medium transition-colors"

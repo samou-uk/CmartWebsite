@@ -44,6 +44,7 @@ export async function getAllRecipes(): Promise<Recipe[]> {
     const recipeEntries = manifest.recipes || []
     
     if (recipeEntries.length === 0) {
+      console.warn('No recipes listed in manifest file.')
       return []
     }
     
@@ -59,18 +60,8 @@ export async function getAllRecipes(): Promise<Recipe[]> {
           }
         })
         if (response.ok) {
-          const recipeData = await response.json()
-          // Merge manifest data (id, slug) with recipe JSON data
-          // Add defaults for createdAt and updatedAt if missing
-          const now = new Date().toISOString()
-          const recipe: Recipe = {
-            ...recipeData,
-            id: entry.id,
-            slug: entry.slug,
-            createdAt: recipeData.createdAt || now,
-            updatedAt: recipeData.updatedAt || now,
-          }
-          return recipe
+          const recipe = await response.json()
+          return recipe as Recipe
         }
         console.warn(`Failed to fetch recipe: ${entry.filename}`)
         return null
