@@ -117,10 +117,10 @@ export default function Home() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+      <section className="relative min-h-[85vh] xl:min-h-screen flex items-center justify-center pt-20 overflow-hidden">
         {/* Background Image Layer */}
         <div className="absolute inset-0 z-0 w-full h-full">
-          <div className="relative w-full h-full min-h-screen">
+          <div className="relative w-full h-full min-h-[85vh] xl:min-h-screen">
             <Image
               src="/hero-store.png"
               alt="C mart Store Entrance"
@@ -137,11 +137,11 @@ export default function Home() {
         {/* Fallback gradient background - only visible if image doesn't load */}
         <div className="absolute inset-0 gradient-bg z-0 opacity-0"></div>
 
-        <div className="absolute bottom-0 left-0 z-10 w-full pb-20 md:pb-32 px-4 sm:px-6 lg:px-8">
+        <div className="absolute bottom-0 left-0 z-10 w-full pb-16 md:pb-20 xl:pb-28 px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto">
             <div className="max-w-2xl">
               <div className="space-y-6">
-                <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-display font-semibold text-white leading-tight tracking-tight max-w-4xl drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)] animate-fade-in-up">
+                <h1 className="text-4xl md:text-5xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-display font-semibold text-white leading-tight tracking-tight max-w-4xl drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)] animate-fade-in-up">
                   {t('home.hero.slogan')}
                 </h1>
                 
@@ -199,8 +199,8 @@ export default function Home() {
       {/* Store Gallery Section */}
       <section className="section-padding bg-gray-50">
         <div className="container-custom">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-gray-900 mb-4">
+          <div className="text-center mb-10 md:mb-12">
+            <h2 className="section-title font-display font-bold text-gray-900 mb-4">
               {t('home.gallery.title')}
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -223,7 +223,7 @@ export default function Home() {
                 alt="Cmart Store Exterior"
                 width={1200}
                 height={800}
-                className="w-full h-full min-h-[400px] md:min-h-[500px] object-cover group-hover:scale-110 transition-transform duration-700"
+                className="w-full h-full min-h-[320px] md:min-h-[380px] xl:min-h-[500px] object-cover group-hover:scale-110 transition-transform duration-700"
               />
             </div>
             
@@ -293,8 +293,8 @@ export default function Home() {
       {/* Featured Recipes Section */}
       <section className="section-padding bg-white">
         <div className="container-custom">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-gray-900 mb-4">
+          <div className="text-center mb-10 md:mb-14 xl:mb-20">
+            <h2 className="section-title font-display font-bold text-gray-900 mb-4">
               {t('home.featuredRecipes.title')}
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -365,8 +365,8 @@ export default function Home() {
       {/* Quick Links Section */}
       <section className="section-padding bg-gray-50">
         <div className="container-custom">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-gray-900 mb-4">
+          <div className="text-center mb-10 md:mb-12 xl:mb-16">
+            <h2 className="section-title font-display font-bold text-gray-900 mb-4">
               {t('home.exploreMore.title')}
             </h2>
           </div>

@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { LocationIcon, ClockIcon, InstagramIcon, LinkedInIcon, FacebookIcon, TikTokIcon } from './icons'
+import { LocationIcon, ClockIcon, MailIcon, InstagramIcon, LinkedInIcon, FacebookIcon, TikTokIcon } from './icons'
 import Logo from './Logo'
 import { useLanguage } from '@/contexts/LanguageContext'
 
@@ -108,6 +108,15 @@ export default function Footer() {
                   <p>Lower Earley, Earley</p>
                   <p>Reading RG6 5GA</p>
                 </div>
+              </li>
+              <li className="flex items-start space-x-2">
+                <MailIcon className="w-5 h-5 mt-0.5 flex-shrink-0" />
+                <a
+                  href="mailto:cmart@fortunefoods.co.uk"
+                  className="hover-link text-white/80 hover:text-white transition-colors"
+                >
+                  cmart@fortunefoods.co.uk
+                </a>
               </li>
               <li className="flex items-start space-x-2 mt-4">
                 <ClockIcon className="w-5 h-5 mt-0.5 flex-shrink-0" />

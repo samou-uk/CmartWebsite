@@ -18,8 +18,8 @@ module.exports = {
         },
       },
       fontFamily: {
-        sans: ['var(--font-sora)', 'system-ui', 'sans-serif'],
-        display: ['var(--font-sora)', 'system-ui', 'sans-serif'],
+        sans: ['var(--font-jakarta)', 'system-ui', 'sans-serif'],
+        display: ['var(--font-jakarta)', 'system-ui', 'sans-serif'],
       },
     },
   },

@@ -2,22 +2,76 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  src: url('./fonts/plus-jakarta-sans-latin-400-normal.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  src: url('./fonts/plus-jakarta-sans-latin-500-normal.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  src: url('./fonts/plus-jakarta-sans-latin-600-normal.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  src: url('./fonts/plus-jakarta-sans-latin-700-normal.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  src: url('./fonts/plus-jakarta-sans-latin-800-normal.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
 
 @layer base {
   html {
     scroll-behavior: smooth;
-    --font-sora: 'Sora', system-ui, sans-serif;
+    --font-jakarta: 'Plus Jakarta Sans', system-ui, sans-serif;
   }
   
   body {
     @apply bg-white text-gray-900;
-    font-family: var(--font-sora);
+    font-family: var(--font-jakarta);
+  }
+
+  /* 1080p laptops with ~125–150% OS scaling (~1280–1536 × ≤900 CSS px) */
+  @media (min-width: 1024px) and (max-width: 1536px) and (max-height: 900px) {
+    html {
+      font-size: 90%;
+    }
   }
 }
 
 @layer components {
   .section-padding {
-    @apply py-16 md:py-24 lg:py-32;
+    @apply py-12 md:py-16 lg:py-20 xl:py-24 2xl:py-28;
+  }
+
+  .section-title {
+    @apply text-3xl md:text-4xl lg:text-5xl 2xl:text-6xl;
+  }
+
+  .page-hero-title {
+    @apply text-4xl md:text-5xl xl:text-6xl;
   }
   
   .container-custom {

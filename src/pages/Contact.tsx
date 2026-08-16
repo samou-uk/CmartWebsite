@@ -50,7 +50,7 @@ export default function Contact() {
             <div className="text-center mb-12 animate-fade-in-up">
               <div className="inline-block mb-6">
                 <div className="h-1 w-24 bg-primary-dark mx-auto mb-4"></div>
-                <h1 className="text-4xl md:text-5xl font-display font-bold text-gray-900 mb-4">
+                <h1 className="page-hero-title font-display font-bold text-gray-900 mb-4">
                   {t('contact.hero.title')}
                 </h1>
               </div>

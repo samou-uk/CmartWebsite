@@ -1,16 +1,21 @@
 import type { Metadata, Viewport } from 'next'
 import Script from 'next/script'
-import { Sora } from 'next/font/google'
+import localFont from 'next/font/local'
 import './globals.css'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { LanguageProvider } from '@/contexts/LanguageContext'
 import MobileWebAppMeta from '@/components/MobileWebAppMeta'
 
-const sora = Sora({
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700', '800'],
-  variable: '--font-sora',
+const jakarta = localFont({
+  src: [
+    { path: './fonts/plus-jakarta-sans-latin-400-normal.woff2', weight: '400', style: 'normal' },
+    { path: './fonts/plus-jakarta-sans-latin-500-normal.woff2', weight: '500', style: 'normal' },
+    { path: './fonts/plus-jakarta-sans-latin-600-normal.woff2', weight: '600', style: 'normal' },
+    { path: './fonts/plus-jakarta-sans-latin-700-normal.woff2', weight: '700', style: 'normal' },
+    { path: './fonts/plus-jakarta-sans-latin-800-normal.woff2', weight: '800', style: 'normal' },
+  ],
+  variable: '--font-jakarta',
   display: 'swap',
 })
 
@@ -144,8 +149,8 @@ export default function RootLayout({
   }
 
   return (
-    <html lang="en" className={sora.variable}>
-      <body className="font-sans">
+    <html lang="en" className={jakarta.variable}>
+      <body className={`${jakarta.className} font-sans`}>
         <MobileWebAppMeta />
         <Script
           id="structured-data"

@@ -448,7 +448,7 @@ export default function RecipeBuilder() {
                 <ArrowRightIcon className="w-4 h-4 rotate-180 mr-2" />
                 {t('games.back')}
               </Link>
-              <h1 className="text-4xl md:text-5xl font-display font-bold text-gray-900 mb-4">
+              <h1 className="page-hero-title font-display font-bold text-gray-900 mb-4">
                 {t('games.recipeBuilder.title')}
               </h1>
               <p className="text-lg text-gray-600">
