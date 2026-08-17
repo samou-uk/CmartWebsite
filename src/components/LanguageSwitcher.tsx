@@ -12,10 +12,10 @@ export default function LanguageSwitcher({
       <button
         type="button"
         onClick={() => setLanguage('en')}
-        className={`h-full min-w-8 px-2.5 rounded-full text-xs font-semibold tracking-wide border transition-colors ${
+        className={`h-full min-w-9 px-3 rounded-full text-xs font-bold tracking-wide border transition-colors ${
           language === 'en'
             ? 'bg-primary text-white border-primary shadow-soft'
-            : 'border-transparent text-primary-forest/55 hover:text-primary-forest hover:bg-white/20'
+            : 'bg-white/40 text-primary-forest/70 border-primary-forest/25 hover:text-primary-forest hover:border-primary-forest/45 hover:bg-white/55'
         }`}
       >
         EN
@@ -23,10 +23,10 @@ export default function LanguageSwitcher({
       <button
         type="button"
         onClick={() => setLanguage('zh')}
-        className={`h-full min-w-8 px-2.5 rounded-full text-xs font-semibold tracking-wide border transition-colors ${
+        className={`h-full min-w-9 px-3 rounded-full text-xs font-bold tracking-wide border transition-colors ${
           language === 'zh'
             ? 'bg-primary text-white border-primary shadow-soft'
-            : 'border-transparent text-primary-forest/55 hover:text-primary-forest hover:bg-white/20'
+            : 'bg-white/40 text-primary-forest/70 border-primary-forest/25 hover:text-primary-forest hover:border-primary-forest/45 hover:bg-white/55'
         }`}
       >
         中文
@@ -36,8 +36,8 @@ export default function LanguageSwitcher({
 
   if (embedded) {
     return (
-      <div className="inline-flex items-stretch h-full gap-0.5 ml-1.5 pl-1.5 border-l border-white/30">
-        <div className="inline-flex items-stretch h-full gap-0.5 rounded-full bg-white/10 backdrop-blur-sm p-0.5">
+      <div className="inline-flex items-stretch h-full gap-0.5 ml-1.5 pl-1.5 border-l border-primary-forest/20">
+        <div className="inline-flex items-stretch h-full gap-1 rounded-full bg-white/20 backdrop-blur-sm p-0.5 border border-primary-forest/15">
           {buttons}
         </div>
       </div>
@@ -45,7 +45,7 @@ export default function LanguageSwitcher({
   }
 
   return (
-    <div className="inline-flex items-stretch h-11 gap-0.5 bg-white/15 backdrop-blur-md rounded-full p-1 border border-transparent shadow-soft w-fit">
+    <div className="inline-flex items-stretch h-11 gap-1 bg-white/25 backdrop-blur-md rounded-full p-1 border border-primary-forest/20 shadow-soft w-fit">
       {buttons}
     </div>
   )
