@@ -34,7 +34,7 @@ export default function RecipeDetail() {
 
   if (loading) {
     return (
-      <div className="pt-20 min-h-screen flex items-center justify-center">
+      <div className="pt-nav min-h-screen flex items-center justify-center">
         <div className="text-gray-600">Loading recipe...</div>
       </div>
     )
@@ -45,7 +45,7 @@ export default function RecipeDetail() {
   }
 
   return (
-    <div className="pt-20">
+    <div className="pt-nav">
       <div className="container-custom py-8">
         <Link
           to="/recipes"
@@ -85,10 +85,10 @@ export default function RecipeDetail() {
                   {recipe.time}
                 </span>
               </div>
-              <h1 className="text-4xl md:text-5xl font-display font-bold text-gray-900 mb-4">
+              <h1 className="page-hero-title mb-4">
                 {recipe.title}
               </h1>
-              <p className="text-xl text-gray-600 leading-relaxed">
+              <p className="marketing-lede">
                 {recipe.description}
               </p>
               {recipe.author && (

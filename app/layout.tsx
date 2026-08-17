@@ -22,8 +22,8 @@ const jakarta = localFont({
 export const metadata: Metadata = {
   metadataBase: new URL('https://cmart.co.uk'), // Update with your actual domain
   title: {
-    default: 'Cmart - Oriental Grocery Store | Earley, Reading',
-    template: '%s | Cmart Oriental Grocery Store',
+    default: 'Cmart',
+    template: '%s | Cmart',
   },
   description: 'Premium oriental grocery store in Earley, Reading. Offering authentic Asian ingredients, fresh produce, and specialty products. Visit us at Unit 14a, Asda Mall, Lower Earley.',
   keywords: [
@@ -97,7 +97,7 @@ export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
   maximumScale: 5,
-  themeColor: '#0a4d3a',
+  themeColor: '#14532d',
 }
 
 export default function RootLayout({

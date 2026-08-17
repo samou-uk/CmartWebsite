@@ -4,14 +4,14 @@ export default function Privacy() {
   const { t } = useLanguage()
 
   return (
-    <div className="pt-20">
-      <section className="section-padding bg-white">
+    <div className="pt-nav">
+      <section className="section-padding page-glow">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto">
-            <h1 className="text-4xl md:text-5xl font-display font-bold text-gray-900 mb-6">
+            <h1 className="page-hero-title mb-4">
               {t('privacy.title')}
             </h1>
-            <p className="text-lg text-gray-600 mb-8">
+            <p className="marketing-lede mb-8">
               {t('privacy.lastUpdated')}: {new Date().toLocaleDateString()}
             </p>
 

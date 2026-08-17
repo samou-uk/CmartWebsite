@@ -438,20 +438,20 @@ export default function RecipeBuilder() {
   }, [gameState.isPlaying, gameState.isFinished, gameState.currentRecipe, gameState.selectedIngredients, gameState.timeLeft, isProcessingClick])
 
   return (
-    <div className="pt-20 min-h-screen bg-gradient-to-b from-white via-gray-50 to-white">
+    <div className="pt-nav min-h-screen bg-gradient-to-b from-white via-gray-50 to-white">
       <section className="section-padding">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto">
             {/* Header */}
             <div className="text-center mb-8">
-              <Link to="/" className="inline-flex items-center text-primary-dark hover:text-primary mb-4 text-sm font-medium">
+              <Link to="/" className="inline-flex items-center text-primary hover:text-primary-hover mb-4 text-sm font-medium">
                 <ArrowRightIcon className="w-4 h-4 rotate-180 mr-2" />
                 {t('games.back')}
               </Link>
-              <h1 className="page-hero-title font-display font-bold text-gray-900 mb-4">
+              <h1 className="page-hero-title mb-4">
                 {t('games.recipeBuilder.title')}
               </h1>
-              <p className="text-lg text-gray-600">
+              <p className="marketing-lede">
                 {t('games.recipeBuilder.description')}
               </p>
             </div>

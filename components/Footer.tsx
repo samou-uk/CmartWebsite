@@ -8,7 +8,7 @@ import { useLanguage } from '@/contexts/LanguageContext'
 export default function Footer() {
   const { t } = useLanguage()
   return (
-    <footer className="bg-primary-dark text-white">
+    <footer className="bg-primary text-white">
       <div className="container-custom section-padding">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           {/* About Section */}

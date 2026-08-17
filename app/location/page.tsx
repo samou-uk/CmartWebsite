@@ -23,9 +23,6 @@ export default function Location() {
         <div className="absolute inset-0 bg-black/40"></div>
         <div className="container-custom relative z-10">
           <div className="max-w-3xl mx-auto text-center">
-            <span className="glass-strong text-white px-4 py-2 rounded-full text-sm font-medium mb-6 inline-block">
-              {t('location.hero.badge')}
-            </span>
             <h1 className="page-hero-title font-display font-bold text-white mb-6">
               {t('location.hero.title')}
             </h1>

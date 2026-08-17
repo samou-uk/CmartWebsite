@@ -23,7 +23,7 @@ export default function Recipes() {
 
   if (loading) {
     return (
-      <div className="pt-20 min-h-screen flex items-center justify-center">
+      <div className="pt-nav min-h-screen flex items-center justify-center">
         <div className="text-gray-600">Loading recipes...</div>
       </div>
     )

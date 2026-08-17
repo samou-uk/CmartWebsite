@@ -23,50 +23,47 @@ export default function Navigation() {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'glass-card shadow-xl'
+          ? 'glass-card shadow-elevated'
           : 'glass-strong'
       }`}
     >
       <div className="container-custom">
         <div className="flex items-center justify-between h-20 relative">
-          {/* Left Navigation */}
           <div className="hidden md:flex items-center space-x-7 flex-1">
             <Link
               href="/"
-              className="nav-link-3d text-gray-700 font-medium transition-all duration-300 relative px-2 py-1"
+              className="nav-link-3d text-gray-700 font-medium transition-colors duration-150 relative px-2 py-1"
             >
               {t('nav.home')}
             </Link>
             <Link
               href="/about"
-              className="nav-link-3d text-gray-700 font-medium transition-all duration-300 relative px-2 py-1"
+              className="nav-link-3d text-gray-700 font-medium transition-colors duration-150 relative px-2 py-1"
             >
               {t('nav.about')}
             </Link>
             <Link
               href="/recipes"
-              className="nav-link-3d text-gray-700 font-medium transition-all duration-300 relative px-2 py-1"
+              className="nav-link-3d text-gray-700 font-medium transition-colors duration-150 relative px-2 py-1"
             >
               {t('nav.recipes')}
             </Link>
           </div>
 
-          {/* Logo - Centered */}
           <div className="absolute left-1/2 transform -translate-x-1/2 flex-shrink-0 nav-logo-3d">
             <Logo />
           </div>
 
-          {/* Right Navigation */}
           <div className="hidden md:flex items-center space-x-7 flex-1 justify-end">
             <Link
               href="/location"
-              className="nav-link-3d text-gray-700 font-medium transition-all duration-300 relative px-2 py-1"
+              className="nav-link-3d text-gray-700 font-medium transition-colors duration-150 relative px-2 py-1"
             >
               {t('nav.location')}
             </Link>
             <Link
               href="/contact"
-              className="bg-primary text-white px-6 py-2.5 rounded-lg font-medium hover:bg-primary-dark transition-all duration-300 relative"
+              className="bg-primary text-white h-9 px-4 inline-flex items-center rounded-lg text-sm font-medium hover:bg-primary-hover transition-colors duration-150"
             >
               {t('nav.contact')}
             </Link>
@@ -75,9 +72,8 @@ export default function Navigation() {
             </div>
           </div>
 
-          {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 text-gray-700 ml-auto"
+            className="md:hidden p-2 min-h-touch min-w-touch inline-flex items-center justify-center text-gray-700 ml-auto"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -99,40 +95,39 @@ export default function Navigation() {
           </button>
         </div>
 
-        {/* Mobile Menu */}
         {isMobileMenuOpen && (
           <div className="md:hidden pb-6 space-y-4">
             <Link
               href="/"
-              className="block text-gray-900 hover:text-primary font-medium transition-colors"
+              className="block text-gray-800 hover:text-primary font-medium transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {t('nav.home')}
             </Link>
             <Link
               href="/about"
-              className="block text-gray-900 hover:text-primary font-medium transition-colors"
+              className="block text-gray-800 hover:text-primary font-medium transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {t('nav.about')}
             </Link>
             <Link
               href="/recipes"
-              className="block text-gray-900 hover:text-primary font-medium transition-colors"
+              className="block text-gray-800 hover:text-primary font-medium transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {t('nav.recipes')}
             </Link>
             <Link
               href="/location"
-              className="block text-gray-900 hover:text-primary font-medium transition-colors"
+              className="block text-gray-800 hover:text-primary font-medium transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {t('nav.location')}
             </Link>
             <Link
               href="/contact"
-              className="block bg-primary text-white px-6 py-2.5 rounded-lg font-medium hover:bg-primary-dark transition-colors text-center"
+              className="block bg-primary text-white px-6 py-2.5 min-h-touch rounded-xl font-medium hover:bg-primary-hover transition-colors text-center"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {t('nav.contact')}
@@ -146,4 +141,3 @@ export default function Navigation() {
     </nav>
   )
 }
-
