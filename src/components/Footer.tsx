@@ -1,24 +1,59 @@
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { LocationIcon, ClockIcon, MailIcon, InstagramIcon, LinkedInIcon, FacebookIcon, TikTokIcon } from './icons'
 import Logo from './Logo'
 import { useLanguage } from '../contexts/LanguageContext'
 
+function useGreenFooter() {
+  const { pathname } = useLocation()
+  if (pathname === '/') return false
+  return (
+    pathname.startsWith('/about') ||
+    pathname.startsWith('/recipes') ||
+    pathname.startsWith('/location') ||
+    pathname.startsWith('/contact') ||
+    pathname.startsWith('/privacy') ||
+    pathname.startsWith('/terms')
+  )
+}
+
 export default function Footer() {
   const { t } = useLanguage()
+  const green = useGreenFooter()
 
-  const linkClass =
-    'hover-link inline-flex items-center min-h-8 md:min-h-0 md:py-0.5 text-primary-forest/85 hover:text-primary transition-colors text-sm font-semibold'
+  const linkClass = green
+    ? 'hover-link inline-flex items-center min-h-8 md:min-h-0 md:py-0.5 text-white/85 hover:text-white transition-colors text-sm font-semibold'
+    : 'hover-link inline-flex items-center min-h-8 md:min-h-0 md:py-0.5 text-primary-forest/85 hover:text-primary transition-colors text-sm font-semibold'
+
+  const iconBtnClass = green
+    ? 'inline-flex items-center justify-center w-10 h-10 rounded-xl text-white/85 hover:text-white hover:bg-white/10 transition-colors'
+    : 'inline-flex items-center justify-center w-10 h-10 rounded-xl text-primary-forest/80 hover:text-primary hover:bg-primary/5 transition-colors'
+
+  const muted = green ? 'text-white/80' : 'text-primary-forest/85'
+  const heading = green ? 'text-white' : 'text-primary-forest'
+  const iconAccent = green ? 'text-white' : 'text-primary'
+  const hairline = green ? 'border-white/15' : 'border-primary-forest/10'
+  const bottomMuted = green ? 'text-white/65' : 'text-primary-forest/70'
+  const bullet = green ? 'text-white/35' : 'text-primary-forest/30'
 
   return (
-    <footer className="bg-white/70 backdrop-blur-xl border-t border-white/50 text-primary-forest">
+    <footer
+      className={
+        green
+          ? 'bg-primary text-white'
+          : 'bg-white/70 backdrop-blur-xl border-t border-white/50 text-primary-forest'
+      }
+    >
       <div className="container-custom py-8 md:py-12">
         <div className="max-w-md mx-auto md:max-w-none md:mx-0 grid grid-cols-1 md:grid-cols-3 gap-0 md:gap-8 mb-0 md:mb-6 text-left">
           {/* About */}
-          <div className="pb-6 md:pb-0 border-b border-primary-forest/10 md:border-0">
+          <div className={`pb-6 md:pb-0 border-b md:border-0 ${hairline}`}>
             <div className="mb-3">
-              <Logo size="default" className="[&_a]:pointer-events-none" />
+              <Logo
+                size="default"
+                className={`[&_a]:pointer-events-none ${green ? 'brightness-0 invert' : ''}`}
+              />
             </div>
-            <p className="text-primary-forest/85 text-sm font-medium leading-relaxed mb-4">
+            <p className={`${muted} text-sm font-medium leading-relaxed mb-4`}>
               {t('footer.description')}
             </p>
             <div className="flex items-center gap-1 -ml-1">
@@ -26,7 +61,7 @@ export default function Footer() {
                 href="https://www.facebook.com/profile.php?id=61562271990098"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center w-10 h-10 rounded-xl text-primary-forest/80 hover:text-primary hover:bg-primary/5 transition-colors"
+                className={iconBtnClass}
                 aria-label="Follow us on Facebook"
               >
                 <FacebookIcon className="w-5 h-5" />
@@ -35,7 +70,7 @@ export default function Footer() {
                 href="https://www.instagram.com/cmartorientaluk"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center w-10 h-10 rounded-xl text-primary-forest/80 hover:text-primary hover:bg-primary/5 transition-colors"
+                className={iconBtnClass}
                 aria-label="Follow us on Instagram"
               >
                 <InstagramIcon className="w-5 h-5" />
@@ -44,7 +79,7 @@ export default function Footer() {
                 href="https://www.tiktok.com/@cmartorientaluk"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center w-10 h-10 rounded-xl text-primary-forest/80 hover:text-primary hover:bg-primary/5 transition-colors"
+                className={iconBtnClass}
                 aria-label="Follow us on TikTok"
               >
                 <TikTokIcon className="w-5 h-5" />
@@ -53,7 +88,7 @@ export default function Footer() {
                 href="https://www.linkedin.com/company/cmart-oriental-foods"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center w-10 h-10 rounded-xl text-primary-forest/80 hover:text-primary hover:bg-primary/5 transition-colors"
+                className={iconBtnClass}
                 aria-label="Follow us on LinkedIn"
               >
                 <LinkedInIcon className="w-5 h-5" />
@@ -63,7 +98,7 @@ export default function Footer() {
 
           {/* Quick Links - desktop only */}
           <div className="hidden md:block">
-            <h3 className="font-extrabold text-base tracking-tight mb-3 text-primary-forest">
+            <h3 className={`font-extrabold text-base tracking-tight mb-3 ${heading}`}>
               {t('footer.quickLinks')}
             </h3>
             <ul className="space-y-0.5">
@@ -102,12 +137,12 @@ export default function Footer() {
 
           {/* Store info */}
           <div className="pt-6 md:pt-0">
-            <h3 className="font-extrabold text-base tracking-tight mb-3 text-primary-forest">
+            <h3 className={`font-extrabold text-base tracking-tight mb-3 ${heading}`}>
               {t('footer.storeInfo')}
             </h3>
-            <ul className="space-y-3 text-sm font-medium text-primary-forest/85">
+            <ul className={`space-y-3 text-sm font-medium ${muted}`}>
               <li className="flex items-start gap-2.5">
-                <LocationIcon className="w-4 h-4 mt-1 flex-shrink-0 text-primary" />
+                <LocationIcon className={`w-4 h-4 mt-1 flex-shrink-0 ${iconAccent}`} />
                 <div className="leading-snug">
                   <p>Unit 14a, Asda Mall</p>
                   <p>Lower Earley, Earley</p>
@@ -115,20 +150,20 @@ export default function Footer() {
                 </div>
               </li>
               <li className="flex items-start gap-2.5">
-                <MailIcon className="w-4 h-4 mt-1 flex-shrink-0 text-primary" />
+                <MailIcon className={`w-4 h-4 mt-1 flex-shrink-0 ${iconAccent}`} />
                 <a
                   href="mailto:cmart@fortunefoods.co.uk"
-                  className="hover-link font-semibold hover:text-primary transition-colors break-all"
+                  className={`hover-link font-semibold transition-colors break-all ${
+                    green ? 'hover:text-white' : 'hover:text-primary'
+                  }`}
                 >
                   cmart@fortunefoods.co.uk
                 </a>
               </li>
               <li className="flex items-start gap-2.5">
-                <ClockIcon className="w-4 h-4 mt-1 flex-shrink-0 text-primary" />
+                <ClockIcon className={`w-4 h-4 mt-1 flex-shrink-0 ${iconAccent}`} />
                 <div className="leading-snug">
-                  <p className="font-extrabold text-primary-forest mb-1">
-                    {t('footer.openingHours')}
-                  </p>
+                  <p className={`font-extrabold mb-1 ${heading}`}>{t('footer.openingHours')}</p>
                   <p>Mon - Sat: 9:00 AM - 7:00 PM</p>
                   <p>Sunday: 10:00 AM - 4:00 PM</p>
                 </div>
@@ -137,15 +172,23 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-primary-forest/10 mt-6 md:mt-0 pt-5">
-          <div className="max-w-md mx-auto md:max-w-none md:mx-0 flex flex-col md:flex-row justify-between items-start md:items-center gap-3 text-sm font-medium text-primary-forest/70 text-left">
+        <div className={`border-t mt-6 md:mt-0 pt-5 ${hairline}`}>
+          <div
+            className={`max-w-md mx-auto md:max-w-none md:mx-0 flex flex-col md:flex-row justify-between items-start md:items-center gap-3 text-sm font-medium text-left ${bottomMuted}`}
+          >
             <p>&copy; {new Date().getFullYear()} Cmart Oriental Ltd. All rights reserved.</p>
             <div className="flex items-center gap-4 font-semibold">
-              <Link to="/privacy" className="hover-link hover:text-primary transition-colors">
+              <Link
+                to="/privacy"
+                className={`hover-link transition-colors ${green ? 'hover:text-white' : 'hover:text-primary'}`}
+              >
                 {t('footer.privacy')}
               </Link>
-              <span className="text-primary-forest/30">•</span>
-              <Link to="/terms" className="hover-link hover:text-primary transition-colors">
+              <span className={bullet}>•</span>
+              <Link
+                to="/terms"
+                className={`hover-link transition-colors ${green ? 'hover:text-white' : 'hover:text-primary'}`}
+              >
                 {t('footer.terms')}
               </Link>
             </div>
