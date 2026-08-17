@@ -21,25 +21,25 @@ export default function Footer() {
   const green = useGreenFooter()
 
   const linkClass = green
-    ? 'hover-link inline-flex items-center min-h-8 md:min-h-0 md:py-0.5 text-primary-forest/90 hover:text-primary transition-colors text-sm font-semibold'
+    ? 'hover-link inline-flex items-center min-h-8 md:min-h-0 md:py-0.5 text-white/90 hover:text-white transition-colors text-sm font-semibold'
     : 'hover-link inline-flex items-center min-h-8 md:min-h-0 md:py-0.5 text-primary-forest/85 hover:text-primary transition-colors text-sm font-semibold'
 
   const iconBtnClass = green
-    ? 'inline-flex items-center justify-center w-10 h-10 rounded-xl text-primary-forest/80 hover:text-primary hover:bg-primary/10 transition-colors'
+    ? 'inline-flex items-center justify-center w-10 h-10 rounded-xl text-white/90 hover:text-white hover:bg-white/10 transition-colors'
     : 'inline-flex items-center justify-center w-10 h-10 rounded-xl text-primary-forest/80 hover:text-primary hover:bg-primary/5 transition-colors'
 
-  const muted = green ? 'text-primary-forest/85' : 'text-primary-forest/85'
-  const heading = 'text-primary-forest'
-  const iconAccent = 'text-primary'
-  const hairline = green ? 'border-primary/20' : 'border-primary-forest/10'
-  const bottomMuted = green ? 'text-primary-forest/65' : 'text-primary-forest/70'
-  const bullet = green ? 'text-primary/40' : 'text-primary-forest/30'
+  const muted = green ? 'text-white/85' : 'text-primary-forest/85'
+  const heading = green ? 'text-white' : 'text-primary-forest'
+  const iconAccent = green ? 'text-white' : 'text-primary'
+  const hairline = green ? 'border-white/20' : 'border-primary-forest/10'
+  const bottomMuted = green ? 'text-white/70' : 'text-primary-forest/70'
+  const bullet = green ? 'text-white/40' : 'text-primary-forest/30'
 
   return (
     <footer
       className={
         green
-          ? 'bg-primary-50 text-primary-forest border-t border-primary/15'
+          ? 'bg-primary text-white'
           : 'bg-white/70 backdrop-blur-xl border-t border-white/50 text-primary-forest'
       }
     >
@@ -150,7 +150,9 @@ export default function Footer() {
                 <MailIcon className={`w-4 h-4 mt-1 flex-shrink-0 ${iconAccent}`} />
                 <a
                   href="mailto:cmart@fortunefoods.co.uk"
-                  className="hover-link font-semibold hover:text-primary transition-colors break-all"
+                  className={`hover-link font-semibold transition-colors break-all ${
+                    green ? 'hover:text-white' : 'hover:text-primary'
+                  }`}
                 >
                   cmart@fortunefoods.co.uk
                 </a>
@@ -173,11 +175,17 @@ export default function Footer() {
           >
             <p>&copy; {new Date().getFullYear()} Cmart Oriental Ltd. All rights reserved.</p>
             <div className="flex items-center gap-4 font-semibold">
-              <Link to="/privacy" className="hover-link hover:text-primary transition-colors">
+              <Link
+                to="/privacy"
+                className={`hover-link transition-colors ${green ? 'hover:text-white' : 'hover:text-primary'}`}
+              >
                 {t('footer.privacy')}
               </Link>
               <span className={bullet}>•</span>
-              <Link to="/terms" className="hover-link hover:text-primary transition-colors">
+              <Link
+                to="/terms"
+                className={`hover-link transition-colors ${green ? 'hover:text-white' : 'hover:text-primary'}`}
+              >
                 {t('footer.terms')}
               </Link>
             </div>
